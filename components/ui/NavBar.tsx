@@ -23,7 +23,8 @@ interface INavBarProps {
 }
 
 const NavBar: React.FC<INavBarProps> = ({ user }) => {
-  const [openMobileMenu, setOpenMobileMenu] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] =
+    useState(false);
   const [openUserMenu, setOpenUserMenu] = useState(false);
 
   const mobileMenuHandler = () => {
@@ -33,60 +34,72 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
   const userMenuHandler = () => {
     setOpenUserMenu(!openUserMenu);
   };
-
   return (
     <nav>
       <div className="main-container border-b border-1 flex justify-between items-center py-2 relative">
         <Link href={"/"}>
-          <div className="flex gap-1 items-center text-xl font-md text-black">
+          <div className="flex gap-1 items-center text-xl font-medium text-black">
             <h1>DEV-THREADS</h1>
             <TbBracketsAngle />
           </div>
         </Link>
 
         <ul className="flex gap-10 max-md:hidden">
-          {mainLinks.map((link) => (
-            <Link href={link.route}>
+          {mainLinks.map((link, index) => (
+            <Link key={index} href={link.route}>
               <li>{link.label}</li>
             </Link>
           ))}
         </ul>
 
-        <div className="flex gap-5 text-xl [&>*]:cursos-pointer">
-          <AiOutlineShoppingCart />
-          <AiOutlineHeart />
-          <div className="max-md:hidden" onClick={userMenuHandler}>
+        <div className="flex gap-5 text-xl [&>*]:cursor-pointer">
+          <div
+            className="max-md:hidden"
+            onClick={userMenuHandler}
+          >
             <AiOutlineUser />
           </div>
-          <div className="md:hidden" onClick={mobileMenuHandler}>
+          <div
+            className="md:hidden"
+            onClick={mobileMenuHandler}
+          >
             {openMobileMenu ? <MdClose /> : <FiMenu />}
           </div>
         </div>
 
         {/* USER MENU */}
-
         {openUserMenu && (
-          <div
-            className="z-10 absolute right-0 top-[40px] w-28 bg-gray-700 shadow-md 
-            rounded-md p-4 text-white max-md:hidden text-center"
-          >
+          <div className="z-10 absolute right-0 top-[40px] w-28 bg-gray-700 shadow-md rounded-md p-4 text-white max-md:hidden text-center">
             {!user ? (
               <ul>
-                <Link href={"/sign-in"}>
-                  <li>Log in</li>
+                <Link
+                  onClick={() => setOpenUserMenu(false)}
+                  href={"/sign-in"}
+                >
+                  <li>Log In</li>
                 </Link>
-                <Link href={"/sign-up"}>
-                  <li>Sign up</li>
+                <Link
+                  onClick={() => setOpenUserMenu(false)}
+                  href={"/sign-up"}
+                >
+                  <li>Sign Up</li>
                 </Link>
               </ul>
             ) : (
               <ul>
-                {userLinks.map((link) => (
-                  <Link href={link.route}>
+                {userLinks.map((link, index) => (
+                  <Link
+                    onClick={() => setOpenUserMenu(false)}
+                    key={index}
+                    href={link.route}
+                  >
                     <li>{link.label}</li>
                   </Link>
                 ))}
-                <li className="cursor-pointer" onClick={() => signOut()}>
+                <li
+                  className="cursor-pointer"
+                  onClick={() => signOut()}
+                >
                   Sign Out
                 </li>
               </ul>
@@ -98,30 +111,33 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
       {/* MOBILE MENU */}
       {openMobileMenu && (
         <div className="md:hidden">
-          <div className="absolute right-5 w-48 bg-gray-700 py-5 shadow-md rounded-md p-4 text-white text-center z-[9999]">
+          <div className="absolute right-5 w-48 bg-gray-700 py-5 shadow-md rounded-md p-4 text-white text-center z-[99999]">
             <ul className="flex flex-col gap-5">
-              {mainLinks.map((link) => (
-                <Link href={link.route}>
+              {mainLinks.map((link, index) => (
+                <Link key={index} href={link.route}>
                   <li>{link.label}</li>
                 </Link>
               ))}
               {!user ? (
                 <>
                   <Link href={"/sign-in"}>
-                    <li>Log in</li>
+                    <li>Log In</li>
                   </Link>
                   <Link href={"/sign-up"}>
-                    <li>Sign up</li>
+                    <li>Sign Up</li>
                   </Link>
                 </>
               ) : (
                 <>
-                  {userLinks.map((link) => (
-                    <Link href={link.route}>
+                  {userLinks.map((link, index) => (
+                    <Link key={index} href={link.route}>
                       <li>{link.label}</li>
                     </Link>
                   ))}
-                  <li className="cursor-pointer" onClick={() => signOut()}>
+                  <li
+                    className="cursor-pointer"
+                    onClick={() => signOut()}
+                  >
                     Sign Out
                   </li>
                 </>
@@ -133,6 +149,7 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
     </nav>
   );
 };
+
 
 export default NavBar;
 

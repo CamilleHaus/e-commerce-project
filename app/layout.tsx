@@ -4,7 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/ui/NavBar";
 import AuthContext from "@/context/authContext";
 import getCurrentUser from "./(auth)/actions/getCurrentUser";
-import ToasterContext from "@/context/hotToastContext";
+import ToasterContext from "@/context/HotToastContext";
 
 const raleway = Raleway({
   subsets: ["latin"],
