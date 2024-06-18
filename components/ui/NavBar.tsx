@@ -52,11 +52,13 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
           ))}
         </ul>
 
-        <div className="flex gap-5 text-xl [&>*]:cursor-pointer">
+        <div className="flex flex-row gap-5 text-xl [&>*]:cursor-pointer">
           <div
-            className="max-md:hidden"
+            className="max-md:hidden flex gap-6"
             onClick={userMenuHandler}
           >
+            <AiOutlineShoppingCart />
+            <AiOutlineHeart />
             <AiOutlineUser />
           </div>
           <div

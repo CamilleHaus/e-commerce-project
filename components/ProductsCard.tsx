@@ -4,8 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { FaHeartCirclePlus, FaEye } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import { IProductType } from "@/types/productTypes";
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ product }: { product: IProductType }) => {
   const [selectedSize, setSelectedSize] = useState("");
 
   return (
@@ -39,6 +40,8 @@ const ProductsCard = ({ product }) => {
         <option value="medium">Medium</option>
         <option value="large">Large</option>
       </select>
+
+      <button>Add to cart</button>
     </div>
   );
 };
