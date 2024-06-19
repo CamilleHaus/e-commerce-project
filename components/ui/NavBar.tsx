@@ -5,7 +5,8 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { mainLinks } from "@/constants";
 import { userLinks } from "@/constants";
-import { User } from "@prisma/client"
+import { User } from "@prisma/client";
+import CartIcon from "@/app/(shoppingCart)/components/ui/CartIcon";
 
 // icons
 
@@ -19,12 +20,11 @@ import { MdClose } from "react-icons/md";
 import { TbBracketsAngle } from "react-icons/tb";
 
 interface INavBarProps {
-  user: User
+  user: User;
 }
 
 const NavBar: React.FC<INavBarProps> = ({ user }) => {
-  const [openMobileMenu, setOpenMobileMenu] =
-    useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [openUserMenu, setOpenUserMenu] = useState(false);
 
   const mobileMenuHandler = () => {
@@ -53,18 +53,12 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
         </ul>
 
         <div className="flex flex-row gap-5 text-xl [&>*]:cursor-pointer">
-          <div
-            className="max-md:hidden flex gap-6"
-            onClick={userMenuHandler}
-          >
-            <AiOutlineShoppingCart />
-            <AiOutlineHeart />
+          <CartIcon />
+          <AiOutlineHeart />
+          <div className="max-md:hidden flex gap-6" onClick={userMenuHandler}>
             <AiOutlineUser />
           </div>
-          <div
-            className="md:hidden"
-            onClick={mobileMenuHandler}
-          >
+          <div className="md:hidden" onClick={mobileMenuHandler}>
             {openMobileMenu ? <MdClose /> : <FiMenu />}
           </div>
         </div>
@@ -74,16 +68,10 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
           <div className="z-10 absolute right-0 top-[40px] w-28 bg-gray-700 shadow-md rounded-md p-4 text-white max-md:hidden text-center">
             {!user ? (
               <ul>
-                <Link
-                  onClick={() => setOpenUserMenu(false)}
-                  href={"/sign-in"}
-                >
+                <Link onClick={() => setOpenUserMenu(false)} href={"/sign-in"}>
                   <li>Log In</li>
                 </Link>
-                <Link
-                  onClick={() => setOpenUserMenu(false)}
-                  href={"/sign-up"}
-                >
+                <Link onClick={() => setOpenUserMenu(false)} href={"/sign-up"}>
                   <li>Sign Up</li>
                 </Link>
               </ul>
@@ -98,10 +86,7 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
                     <li>{link.label}</li>
                   </Link>
                 ))}
-                <li
-                  className="cursor-pointer"
-                  onClick={() => signOut()}
-                >
+                <li className="cursor-pointer" onClick={() => signOut()}>
                   Sign Out
                 </li>
               </ul>
@@ -136,10 +121,7 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
                       <li>{link.label}</li>
                     </Link>
                   ))}
-                  <li
-                    className="cursor-pointer"
-                    onClick={() => signOut()}
-                  >
+                  <li className="cursor-pointer" onClick={() => signOut()}>
                     Sign Out
                   </li>
                 </>
@@ -151,7 +133,6 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
     </nav>
   );
 };
-
 
 export default NavBar;
 
