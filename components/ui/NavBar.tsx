@@ -12,7 +12,6 @@ import CartIcon from "@/app/(shoppingCart)/components/ui/CartIcon";
 
 import {
   AiOutlineUser,
-  AiOutlineShoppingCart,
   AiOutlineHeart,
 } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
