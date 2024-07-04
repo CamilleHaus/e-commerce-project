@@ -1,7 +1,12 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";   
+import { auth } from "@/auth";
 
 
-export default async function getUserSession() {
-    return await getServerSession(authOptions);
+export async function getSession() {
+    try {
+        const session = await auth();
+        return session;
+    } catch (error) {
+        console.error("Error getting user session:", error);
+        return null;
+    }
 }
