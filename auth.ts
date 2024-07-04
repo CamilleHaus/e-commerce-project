@@ -59,13 +59,6 @@ export const { auth, handlers, signIn, signOut} = NextAuth({
 
     }) 
 
-// const config = {
-//     providers: [credentials]
-// } satisfies NextAuthConfig;
-
-// export const { handlers, auth, signIn, signOut } = NextAuth(credentialsConfig)
-
-
 
 // O problema está no hasheamento e na comparação entre as senhas!!!
 
