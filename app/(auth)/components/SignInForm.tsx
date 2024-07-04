@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import { redirect, useRouter } from "next/navigation";
 import { useRef } from "react";
 import Link from "next/link";
+import credentials from "next-auth/providers/credentials";
 
 
 const SignInForm = () => {
@@ -21,6 +22,8 @@ const SignInForm = () => {
 
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
+
+        console.log(email, password, "#########")
 
         try {
             
