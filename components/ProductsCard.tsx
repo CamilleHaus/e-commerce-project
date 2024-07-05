@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { FaHeartCirclePlus, FaEye } from "react-icons/fa6";
+import { FaEye } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import { IProductType } from "@/types/productTypes";
 import AddToCart from "@/app/(shoppingCart)/components/ui/AddToCart";
 import AddToWishlistButton from "@/app/(wishlist)/components/AddToWishlistButton";
+import formatPrice from "@/utils/formatPrice";
 
 const ProductsCard = ({ product }: { product: IProductType }) => {
   const [selectedSize, setSelectedSize] = useState("");
@@ -43,7 +44,7 @@ const ProductsCard = ({ product }: { product: IProductType }) => {
         </div>
       </div>
       <h3 className="font-bold tracking-wide">{product.name}</h3>
-      <span>{product.unit_amount}</span>
+      <span>{formatPrice(product.unit_amount)}</span>
       <select
         value={selectedSize}
         onChange={(e) => setSelectedSize(e.target.value)}

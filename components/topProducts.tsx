@@ -10,7 +10,7 @@ const TopProducts = async () => {
   );
 
   return (
-    <div className="py-10 border-t">
+    <section className="py-10 border-t">
       <div className="main-container">
         <div className="flex justify-between items-center">
           <h1 className="text-xl uppercase border-b border-gray-900 text-gray-900">
@@ -21,12 +21,12 @@ const TopProducts = async () => {
           </Link>
         </div>
         <div className="grid lg:grid-cols-4 gap-5 grid-cols-2">
-            {topProducts.map((product) => (
-                <ProductsCard product={product}/>
-            ))}
+          {topProducts.map((product) => (
+            <ProductsCard product={product} />
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

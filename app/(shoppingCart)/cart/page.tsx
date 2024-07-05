@@ -1,7 +1,7 @@
 import Cart from "../components/Cart";
 
 const page = () => {
-    return <Cart />
-}
+  return <Cart />;
+};
 
 export default page;

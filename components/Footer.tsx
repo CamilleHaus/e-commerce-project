@@ -13,7 +13,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="w-full py-5 bg-gray-900 mt-10">
+    <footer className="w-full py-5 bg-gray-900 mt-10">
       <div className="main-container">
         <div
           className="py-5 mb-5 border-b border-gray-300 border-opacity-20 flex justify-between items-center
@@ -49,7 +49,7 @@ const Footer = () => {
           />
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

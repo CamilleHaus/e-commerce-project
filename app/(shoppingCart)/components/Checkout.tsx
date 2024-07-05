@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  loadStripe,
-  StripeElementsOptions,
-} from "@stripe/stripe-js";
+import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useCheckoutStore } from "@/store/useCheckoutStore";
 import { useState, useEffect } from "react";
@@ -53,9 +50,7 @@ const Checkout = ({
         const data = await response.json();
         if (data && data.paymentIntent) {
           setClientSecret(data.paymentIntent.client_secret);
-          checkoutStore.setPaymentIntent(
-            data.paymentIntent.id
-          );
+          checkoutStore.setPaymentIntent(data.paymentIntent.id);
         } else {
           console.error("unexpected data structure", data);
         }

@@ -25,7 +25,7 @@ export async function createUser(formData: FormData) {
         data: {
           email: email,
           name: name,
-          hashedPassword: password
+          hashedPassword: password,
           // hashedPassword: hashedPassword,
         },
       });

@@ -1,11 +1,11 @@
 import SignInForm from "../components/SignInForm";
 
 const SignIn = () => {
-    return (
+  return (
     <div className="py-10">
-        <SignInForm />
+      <SignInForm />
     </div>
-        )
+  );
 };
 
 export default SignIn;

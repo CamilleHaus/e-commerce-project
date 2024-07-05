@@ -3,8 +3,6 @@ import getCurrentUser from "@/app/(auth)/actions/getCurrentUser";
 import prisma from "@/lib/prismaDB";
 import Stripe from "stripe";
 import { CartEntry } from "use-shopping-cart/core";
-import { it } from "node:test";
-import { error } from "console";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2024-04-10"
@@ -18,7 +16,7 @@ const manageStripePaymentIntent = async (payment_intent_id: string, total: numbe
 
     return await stripe.paymentIntents.create({
         amount: total,
-        currency: "USD",
+        currency: "usd",
         automatic_payment_methods: { enabled: true }
     })
 }
@@ -26,20 +24,21 @@ const manageStripePaymentIntent = async (payment_intent_id: string, total: numbe
 // Essa função vai atualizar o payment_intent que é criado quando clicamos no checkout caso a gente volte e atualize o carrinho,
 // ao invés de ficar criando toda a vez um payment_intent novo
 
-const manageOrderAndDB = async (paymentIntent: any, total: number, items: CartEntry[], userId: string) => {
+const manageOrderInDB = async (paymentIntent: any, total: number, items: CartEntry[], userId: string) => {
 
     const existingOrder = await prisma.order.findUnique({
         where: { paymentIntentID: paymentIntent.id }
     })
 
     if (existingOrder) {
-        return await prisma.order.update({
-            where: { paymentIntentID: paymentIntent.id },
-            data: { userId, amount: total, currency: "usd", status: "awaiting payment" }
-        })
+        return await prisma.order.update(
+            {
+                where: { paymentIntentID: paymentIntent.id },
+                data: { userId, amount: total, currency: "usd", status: "awaiting payment" }
+            })
     }
 
-    const createOrder = await prisma.order.create({
+    const createdOrder = await prisma.order.create({
         data: {
             userId,
             amount: total,
@@ -52,7 +51,7 @@ const manageOrderAndDB = async (paymentIntent: any, total: number, items: CartEn
     const orderItem = items.map(async (item) => {
         await prisma.orderItem.create({
             data: {
-                orderId: createOrder.id,
+                orderId: createdOrder.id,
                 name: item.name,
                 quantity: item.quantity,
                 price: item.price,
@@ -63,12 +62,10 @@ const manageOrderAndDB = async (paymentIntent: any, total: number, items: CartEn
     })
 
     await Promise.all(orderItem)
-
-    return createOrder
+    return createdOrder
 }
 
 export async function POST(req: NextRequest) {
-
     const user = await getCurrentUser()
 
     if (!user) {
@@ -81,15 +78,12 @@ export async function POST(req: NextRequest) {
     const total = totalAmount
 
     try {
-
         const paymentIntent = await manageStripePaymentIntent(payment_intent_id, total)
-        const order = await manageOrderAndDB(payment_intent_id, total, items, userId)
+        const order = await manageOrderInDB(paymentIntent, total, items, userId)
 
-        return NextResponse.json({ paymentIntent })
+        return NextResponse.json({ paymentIntent, order })
     } catch (error) {
         console.error(error)
     }
-
-
 
 }

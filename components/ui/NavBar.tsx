@@ -7,13 +7,11 @@ import { mainLinks } from "@/constants";
 import { userLinks } from "@/constants";
 import { User } from "@prisma/client";
 import CartIcon from "@/app/(shoppingCart)/components/ui/CartIcon";
-import WishlistIcon from "@/app/(wishlist)/components/wishlistIcon";
+import WishlistIcon from "@/app/(wishlist)/components/WishlistIcon";
 
 // icons
 
-import {
-  AiOutlineUser,
-} from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 import { TbBracketsAngle } from "react-icons/tb";
