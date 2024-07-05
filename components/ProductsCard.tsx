@@ -6,15 +6,16 @@ import { FaHeartCirclePlus, FaEye } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import { IProductType } from "@/types/productTypes";
 import AddToCart from "@/app/(shoppingCart)/components/ui/AddToCart";
+import AddToWishlistButton from "@/app/(wishlist)/components/AddToWishlistButton";
 
 const ProductsCard = ({ product }: { product: IProductType }) => {
   const [selectedSize, setSelectedSize] = useState("");
 
-  const isSizeSelected = selectedSize !== ""
+  const isSizeSelected = selectedSize !== "";
 
   const showToast = () => {
-    toast.error("Please choose a size first")
-  }
+    toast.error("Please choose a size first");
+  };
 
   return (
     <div className="relative flex flex-col items-center">
@@ -28,7 +29,13 @@ const ProductsCard = ({ product }: { product: IProductType }) => {
         />
         <div className="hidden absolute top-5 items-center justify-center group-hover:flex flex-col gap-3">
           <button className="mx-2 bg-gray-900 border text-white p-2 rounded-md hover:bg-gray-900/75">
-            <FaHeartCirclePlus />
+            <AddToWishlistButton
+              name={product.name}
+              image={product.image}
+              unit_amount={product.unit_amount}
+              id={product.id}
+              quantity={product.quantity}
+            />
           </button>
           <button className="mx-2 bg-gray-900 border text-white p-2 rounded-md hover:bg-gray-900/75">
             <FaEye />

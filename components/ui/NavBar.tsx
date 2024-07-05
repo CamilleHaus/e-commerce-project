@@ -7,12 +7,12 @@ import { mainLinks } from "@/constants";
 import { userLinks } from "@/constants";
 import { User } from "@prisma/client";
 import CartIcon from "@/app/(shoppingCart)/components/ui/CartIcon";
+import WishlistIcon from "@/app/(wishlist)/components/wishlistIcon";
 
 // icons
 
 import {
   AiOutlineUser,
-  AiOutlineHeart,
 } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
@@ -53,7 +53,7 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
 
         <div className="flex flex-row gap-5 text-xl [&>*]:cursor-pointer">
           <CartIcon />
-          <AiOutlineHeart />
+          <WishlistIcon />
           <div className="max-md:hidden flex gap-6" onClick={userMenuHandler}>
             <AiOutlineUser />
           </div>
