@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+
 const page = () => {
   const wishlistStore = useWishlistStore();
 

@@ -3,6 +3,7 @@ import getCurrentUser from "../(auth)/actions/getCurrentUser";
 import Image from "next/image";
 import formatPrice from "@/utils/formatPrice";
 
+
 const page = async () => {
   const user = await getCurrentUser();
 

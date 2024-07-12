@@ -8,6 +8,8 @@ import ToasterContext from "@/context/HotToastContext";
 import CartContext from "@/context/CartContext";
 import Footer from "@/components/Footer";
 
+export const dynamic = "force-dynamic"
+
 const raleway = Raleway({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "900"],

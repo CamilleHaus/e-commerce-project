@@ -5,6 +5,7 @@ import { useWishlistStore } from "@/store/useWishlistStore";
 import { IProductType } from "@/types/productTypes";
 import toast from "react-hot-toast";
 
+
 const AddToWishlistButton = ({
   name,
   id,

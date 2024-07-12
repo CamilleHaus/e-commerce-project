@@ -1,5 +1,7 @@
 import Cart from "../components/Cart";
 
+export const dynamic = "force-dynamic"
+
 const page = () => {
   return (
     <div className="h-[90%]">
