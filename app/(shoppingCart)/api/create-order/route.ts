@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
         const paymentIntent = await manageStripePaymentIntent(payment_intent_id, total)
         const order = await manageOrderInDB(paymentIntent, total, items, userId)
 
-        return NextResponse.json({ paymentIntent, order })
+        return NextResponse.json({ paymentIntent })
     } catch (error) {
         console.error(error)
     }

@@ -21,13 +21,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                         where: { email: credentials.email as string }
                     });
 
-                    console.log(user, "#####use")
-
-                    // if( credentials.email !== user?.email || credentials.password !== user?.hashedPassword) {
-                    //     throw new Error("Invalid credentials");
-                    // }
-
-                    const compare = bcrypt.compare(
+                    const compare = await bcrypt.compare(
                         credentials.password,
                         user?.hashedPassword as string
                     )
@@ -36,8 +30,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                         throw new Error("Credentials not valid")
                     }
 
-                    if (user && user.hashedPassword === credentials.password) {
-                        console.log(credentials.password, "##### credentials passowrd")
+                    if (compare) {
                         return user;
                     } else {
                         throw new Error("Invalid credentials");

@@ -27,7 +27,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={raleway.className}>
+      <body className={`${raleway.className} flex flex-col min-h-screen`}>
         <AuthContext>
           <CartContext>
             <ToasterContext />

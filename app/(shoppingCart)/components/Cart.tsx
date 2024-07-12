@@ -8,6 +8,7 @@ import Button from "@/components/ui/Button";
 import { IoMdAdd } from "react-icons/io";
 import { FiMinus } from "react-icons/fi";
 import { IoBagCheckOutline } from "react-icons/io5";
+import formatPrice from "@/utils/formatPrice";
 
 const Cart = () => {
   const { cartDetails, removeItem, totalPrice, decrementItem, incrementItem } =
@@ -60,7 +61,7 @@ const Cart = () => {
                         <h3>{item.name}</h3>
                         <h3 className="text-small">{item.size}</h3>
                       </div>
-                      <p className="ml-4">{item.price}</p>
+                      <p className="ml-4">{formatPrice(item.price)}</p>
                     </div>
                   </div>
 
@@ -97,7 +98,7 @@ const Cart = () => {
               <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                 <div className="flex justify-between text-base font-medium text-gray-900">
                   <p>Subtotal:</p>
-                  <p>{totalPrice}</p>
+                  <p>{formatPrice(totalPrice!)}</p>
                 </div>
                 <p className="mt-1 text-sm text-gray-500 flex gap-2 items-center">
                   Shipping and taxes are calculated at checkout{" "}
