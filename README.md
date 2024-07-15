@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sobre essa aplicação: 
 
-## Getting Started
+Esta é uma aplicação de **E-commerce**, onde os usuários podem selecionar suas camisas favoritas, adicioná-las ao carrinho, realizar a compra e acompanhar o status dos pedidos através da seção "Orders". Além disso, é possível adicionar itens à Wishlist para compras futuras. A aplicação também oferece registro e autenticação de usuários.
 
-First, run the development server:
+## Principais tecnologias utilizadas:
+
+- Next.js
+- Tailwind
+- Typescript
+- Prisma
+- MongoDB 
+- AuthJS
+- Stripe
+- Clsx
+- bcrypt
+
+Esta é uma aplicação **Full Stack** que utiliza **Next.js** para o desenvolvimento do Frontend, **Tailwind CSS** para a estilização, **Prisma** como ORM, **MongoDB** como banco de dados, e **Auth.js** para autenticação e integração com o Backend. A plataforma **Stripe** é utilizada para o gerenciamento de produtos, criação de rotas e integração com métodos de pagamento.
+
+## Para testar a aplicação
+
+1. Clone o repositório
+
+```bash
+git clone <URL do repositório>
+```
+
+2. Instale as dependências
+
+```bash
+npm install
+```
+
+3. Rode o comando abaixo para rodar a aplicação
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Maiores desafios:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Durante o desenvolvimento desta aplicação, um dos principais desafios foi a migração do NextAuth v4 para o Auth.js v5. Como eu nunca havia trabalhado com o CredentialsProvider do Auth.js, precisei ajustar todas as configurações de usuário para garantir que o processo de autenticação continuasse ocorrendo de forma segura e eficiente.

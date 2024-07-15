@@ -31,6 +31,7 @@ const NavBar: React.FC<INavBarProps> = ({ user }) => {
   const userMenuHandler = () => {
     setOpenUserMenu(!openUserMenu);
   };
+  
   return (
     <nav>
       <div className="main-container border-b border-1 flex justify-between items-center py-2 relative">

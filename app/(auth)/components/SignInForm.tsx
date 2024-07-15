@@ -7,8 +7,7 @@ import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import Link from "next/link";
-import bcrypt from "bcrypt";
-
+  
 const SignInForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const router = useRouter();
@@ -35,6 +34,7 @@ const SignInForm = () => {
       toast.success("Sucessfully signed in!");
       router.push("/");
     } catch (error: any) {
+      console.log(error)
       toast.error("Invalid email and/or password");
     }
   };

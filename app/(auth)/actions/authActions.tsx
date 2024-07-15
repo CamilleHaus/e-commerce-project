@@ -18,7 +18,7 @@ export async function createUser(formData: FormData) {
       if (existingUser) {
         throw new Error("You are already a member");
       }
-
+      
       const hashedPassword = await bcrypt.hash(password, 10);
 
       await prisma.user.create({
